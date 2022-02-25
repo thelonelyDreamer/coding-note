@@ -1,0 +1,4 @@
+interface ApplicationContextInitializer
+interface ApplicationRunner
+interface CommandLineRunner
+interface SpringApplicationRunListener
