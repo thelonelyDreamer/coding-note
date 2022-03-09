@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>hello vue</title>
+		<script type="text/javascript" src="./vue.js"></script>
+	</head>
+	<style type="text/css">
+		#box{
+			margin: 0px;
+			background-color: dodgerblue;
+		}
+	</style>
+	<body>
+		<div id="box">
+			{{10+20}}
+			<p>{{myname}}</p>
+			<div v-html="myhtml"></div>
+			<div v-show="is_show">动态显示和隐藏</div>
+			<div v-if="is_created">动态的创建和删除</div>
+		</div>
+		
+		<script>
+			var vm = new Vue({
+				el:"#box",
+				data:{
+					myname:"小明",
+					myhtml:"<b>hello</b>",
+					is_show:true,
+					is_created:true,
+				}
+			})
+		</script>
+	</body>
+</html>

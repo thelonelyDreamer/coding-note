@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>改变文本</title>
+	</head>
+	<body>
+		<div>
+			<p id="demo">Hello World</p>
+			<script type="text/javascript">
+				document.getElementById("demo").style.color = "blue";
+			</script>
+		</div>
+		<script type="text/javascript">
+			function change_text(){
+				document.getElementById("demo").innerHTML = "change text";
+			}
+		</script>
+		<input type="button" onclick="change_text()" value="改变文本"/>
+	</body>
+</html>

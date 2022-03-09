@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>clock</title>
+	</head>
+	<style>
+		#div1{width: 100px;height: 200px;padding: 50px;background-color: orange;border: 1px solid black;margin-right:20%;float: left;margin-left: 25%;}
+		#div1 span{font-size: 20px;}
+		#div1 button{width: 100px;height: 30px;font-size: 16px;margin-top: 20px;background-color: black;color: white;}
+		#div2{width: 100px;height: 200px;padding: 50px;background-color: orange;border: 1px solid black ;float: left;}
+		#div2 span{font-size: 20px;}
+		#div2 button{width: 100px;height: 30px;font-size: 16px;margin-top: 20px;background-color: black;color: white;}
+	</style>
+	<script>
+		var isRunning = false;
+		var timer1=null;
+		var timer2=null;
+		var i1=0;
+		var i2=0
+		function getButton(id){
+			return document.getElementById(id);
+		}
+		window.onload=function(){
+			
+			getButton("start").onclick=function(){
+				timer1=setInterval(function(){
+						i1++;
+					getButton("sec1").innerHTML = doubleNum(parseInt(i1%60));
+					getButton("min1").innerHTML = doubleNum(parseInt((i1/60)%60));
+					getButton("hour1").innerHTML = doubleNum(parseInt(i1/3600));
+					},1000);
+			}
+			getButton("pause").onclick=function(){
+				clearInterval(timer1);
+			}
+			getButton("reser1").onclick=function(){
+				clearInterval(timer1);
+				i1=0;
+				getButton("hour1").innerHTML="00";
+				getButton("min1").innerHTML="00";
+				getButton("sec1").innerHTML="00";
+			}
+			
+			getButton("startpause").onclick=function(){
+				if(!isRunning){
+					getButton("startpause").innerHTML="暂停";
+					isRunning=true;
+					timer2=setInterval(function(){
+						i2++;
+					getButton("sec2").innerHTML = doubleNum(parseInt(i2%60));
+					getButton("min2").innerHTML = doubleNum(parseInt((i2/60)%60));
+					getButton("hour2").innerHTML = doubleNum(parseInt(i2/3600));
+					},1000);
+				}else{
+					getButton("startpause").innerHTML="开始";
+					isRunning=false;
+					clearInterval(timer2);
+				}
+			}
+			
+			getButton("reser2").onclick=function(){
+				clearInterval(timer2);
+				isRunning=false;
+				i2=0;
+				getButton("startpause").innerHTML="开始";
+				getButton("hour2").innerHTML="00";
+				getButton("min2").innerHTML="00";
+				getButton("sec2").innerHTML="00";
+			}
+		
+			function doubleNum(n){
+				if(n<10){
+					return "0"+n;
+				}else{
+					return  n;
+				}
+			}
+		}
+	</script>
+	<body>
+		<div>
+		<div id="div1">
+			<span id="hour1">00</span>
+			<span class="cononl">:</span>
+			<span id="min1">00</span>
+			<span class="cononl">:</span>
+			<span id="sec1">00</span>
+			<br />
+			<button id="start">开始</button>
+			<button id="pause">暂停</button>
+			<button id="reser1">复位</button>
+		</div>
+		
+		<div id="div2">
+			<span id="hour2">00</span>
+			<span class="cononl">:</span>
+			<span id="min2">00</span>
+			<span class="cononl">:</span>
+			<span id="sec2">00</span>
+			<br />
+			<button id="startpause">开始</button>
+			<button id="reser2">复位</button>
+		</div>
+		</div>
+	</body>
+</html>
