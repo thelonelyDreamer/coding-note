@@ -318,6 +318,29 @@ Sending build context to Docker daemon 2.048 kB
 Error response from daemon: Unknown instruction: RUNCMD
 ```
 
+# 三、示例
+
+```dockerfile
+FROM centos
+MAINTAINER ****
+ENV MYPATH /user/local
+WORKDIR $MYPATH
+RUN yum -y install vim
+RUN yum -y net-tools
+
+EXPOSE 80
+CMD echo $MYPATH
+CMD echo "hello docker"
+CMD /bin/bash
+```
+
+```
+docker build -f 文件名 -t 镜像名 .
+```
+
+
+
 # 参考文献
 
 1. https://www.cnblogs.com/yanh0606/p/11360936.html
+
