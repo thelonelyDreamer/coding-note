@@ -2,11 +2,7 @@
 
 ### 1. Java8 中有哪些线程池
 
-
-
 ### 2. 线程池的执行流程
-
-
 
 ### 3. 线程池的拒绝策略
 
@@ -87,7 +83,7 @@
      * is shut down, in which case the task is discarded.
      */
     public static class DiscardOldestPolicy implements RejectedExecutionHandler {
- 
+
         public DiscardOldestPolicy() { }
 
         /**
@@ -118,6 +114,8 @@ public class ThreadPoolExecutor extends AbstractExecutorService {
     private final BlockingQueue<Runnable> workQueue;
     private volatile ThreadFactory threadFactory;
     private volatile RejectedExecutionHandler handler;
+
+    private volatile boolean allowCoreThreadTimeOut; // 是否允许核心线程销毁
 }
 TimeUnit timeUnit // 时间单位
 ```

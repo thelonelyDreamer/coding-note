@@ -42,9 +42,9 @@ public class Swagger2Config {
 
         return docket;
     }
-    
+
     // docket 可以改设置，比如apiInfo,点源码即可配置
-    
+
 }
 ```
 
@@ -69,4 +69,3 @@ springfox:
     swagger-ui:
       enabled: false
 ```
-
