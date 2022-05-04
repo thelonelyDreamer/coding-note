@@ -129,13 +129,9 @@ mysql 主从（**0**）
 # db.password.0=naco
 ```
 
-
-
 # 三、使用Mysql 数据库
 
 ## 1. 安装mysql 5 并按照配置文件夹中的sql初始化数据库
-
-
 
 ### 2. 修改配置文件
 
@@ -152,7 +148,6 @@ spring.datasource.platform=mysql
 db.url.0=jdbc:mysql://127.0.0.1:3306/nacos?characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useUnicode=true&useSSL=false&serverTimezone=UTC
 db.user.0=nacos
 db.password.0=nacos
-
 ```
 
 **cluster.conf**
@@ -170,4 +165,3 @@ git clone https://github.com/nacos-group/nacos-docker.git
 cd nacos-docker
 docker-compose -f example/standalone-derby.yaml up
 ```
-
