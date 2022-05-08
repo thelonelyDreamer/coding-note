@@ -1,0 +1,6 @@
+运 算 数 1	运 算 数 2	结果
+short		long		long
+int  		long		long
+char 		int		int
+unsigned int	int		int
+int 		double		double
