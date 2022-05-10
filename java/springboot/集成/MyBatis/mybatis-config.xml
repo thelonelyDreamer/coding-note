@@ -1,0 +1,58 @@
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties>
+        <property name="jdbc.driverClass" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="jdbc.url" value="jdbc:mysql://121.4.47.93:3306/temp?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=GMT%2B8"/>
+        <property name="jdbc.username" value="wangchao"/>
+        <property name="jdbc.password" value="wangchao2303"/>
+    </properties>
+    <settings>
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+<!--        <setting name="cacheEnabled" value="true"/>-->
+<!--        <setting name="lazyLoadingEnabled" value="true"/>-->
+<!--        <setting name="multipleResultSetsEnabled" value="true"/>-->
+<!--        <setting name="useColumnLabel" value="true"/>-->
+<!--        <setting name="useGeneratedKeys" value="false"/>-->
+<!--        <setting name="autoMappingBehavior" value="PARTIAL"/>-->
+<!--        <setting name="autoMappingUnknownColumnBehavior" value="WARNING"/>-->
+<!--        <setting name="defaultExecutorType" value="SIMPLE"/>-->
+<!--        <setting name="defaultStatementTimeout" value="25"/>-->
+<!--        <setting name="defaultFetchSize" value="100"/>-->
+<!--        <setting name="safeRowBoundsEnabled" value="false"/>-->
+<!--        <setting name="mapUnderscoreToCamelCase" value="false"/>-->
+<!--        <setting name="localCacheScope" value="SESSION"/>-->
+<!--        <setting name="jdbcTypeForNull" value="OTHER"/>-->
+<!--        <setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString"/>-->
+    </settings>
+    <typeAliases>
+        <typeAlias alias="Author" type="com.felixwc.mybatis.pojo.data.Author"/>
+        <typeAlias alias="Blog" type="com.felixwc.mybatis.pojo.data.Blog"/>
+        <typeAlias alias="Comment" type="com.felixwc.mybatis.pojo.data.Comment"/>
+        <typeAlias alias="School" type="com.felixwc.mybatis.pojo.data.School"/>
+        <typeAlias alias="User" type="com.felixwc.mybatis.pojo.data.User"/>
+    </typeAliases>
+<!--    类型处理器
+        MyBatis 在设置预处理语句（PreparedStatement）中的参数或从结果集中取出一个值时，
+        都会用类型处理器将获取到的值以合适的方式转换成 Java 类型。官网有具体的类型处理器对应表。
+    <typeHandlers>
+        <typeHandler handler=""></typeHandler>
+    </typeHandlers>-->
+
+    <environments default="dev">
+        <environment id="dev">
+            <transactionManager type="JDBC"></transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driverClass}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <package name="com.felixwc.mybatis.mapper"/>
+    </mappers>
+</configuration>  
+   

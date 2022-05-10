@@ -1,0 +1,39 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mapper 接口的全限定名 -->
+<mapper namespace="com.felixwc.mybatis.mapper.UserMapper">
+    <insert id="insertUser" parameterType="User">
+        INSERT INTO t_user(u_id,u_name,u_age,u_email)
+        VALUES(#{id},#{name},#{age},#{email})
+    </insert>
+
+    <delete id="deleteUserById" parameterType="integer">
+        DELETE FROM t_user WHERE u_id = #{id}
+    </delete>
+
+    <update id="updateUser" parameterType="User">
+        update t_user set u_name = #{name} where u_id= #{id}
+    </update>
+
+    <select id="queryUserById" resultType="User" parameterType="integer">
+        select u_id as id,u_name as name,u_age as age,u_email as email
+        from t_user
+        where u_id = #{id}
+    </select>
+
+    <select id="queryAllUser" resultType="user">
+        select u_id as id,u_name as name,u_age as age,u_email as email
+        from t_user
+    </select>
+
+    <update id="updateUserByMap" parameterType="map">
+        update t_user set u_name = #{name} where u_id= #{id}
+    </update>
+
+    <select id="queryNameLikeString" parameterType="string" resultType="User">
+        select u_id as id,u_name as name,u_age as age,u_email as email
+        from t_user
+        where u_name like #{str}
+    </select>
+</mapper>
