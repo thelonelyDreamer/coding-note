@@ -4,3 +4,6 @@
 3. 编写源文件 xxx.ts
 4. 编译源文件 tsc xxx.ts
 5. 运行目标文件 node xxx.js
+
+6. 更新typescript版本
+npm update typescript

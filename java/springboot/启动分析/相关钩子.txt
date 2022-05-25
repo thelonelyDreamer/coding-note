@@ -1,4 +1,6 @@
 interface ApplicationContextInitializer
+interface SpringApplicationRunListener
+
+
 interface ApplicationRunner
 interface CommandLineRunner
-interface SpringApplicationRunListener
