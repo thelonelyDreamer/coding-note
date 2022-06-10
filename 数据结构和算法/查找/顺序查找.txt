@@ -1,0 +1,15 @@
+//-----顺序查找函数模板----- 
+#ifndef _IOTFIND_H_		//in order to find
+#define _IOTFIND_H_
+
+//顺序查找法在数组list中查找值为key的元素
+//若找到，返回位置，否则返回-1 
+template<class T>
+int seqSearch(const T list[],const T &key){
+	for(int i=0;i<n;i++)
+		if(list[i]=key)
+			return i;
+	return -1;
+}
+
+#endif

@@ -5,7 +5,7 @@
 ![image-20201214170304538](image-20201214170304538.png)
 
 > 存在的问题
->
+> 
 > 1. 客户端到底要将请求发送给哪台服务器
 > 2. 如果所有客户端的请求都发送给了一台服务器
 > 3. 客户端发送的请求可能是动态申请资源的，也可能是有静态资源
@@ -15,7 +15,7 @@
 ![image-20201214170622765](image-20201214170622765.png)
 
 > 可以解决的问题
->
+> 
 > 1. 反向代理
 > 2. 负载均衡
 > 3. 动静分离
@@ -31,7 +31,7 @@
 ### 2、 特点
 
 > 1. 稳定性极强。7*24小时不间断进行
-> 2.  Nginx提供了非常丰富的配置实例
+> 2. Nginx提供了非常丰富的配置实例
 > 3. 占用内存小，并发能力强
 >    - 能承受5万以上的并发
 
@@ -81,7 +81,7 @@ http {
 ```yml
 # /etc/nginx/conf.d/default.conf
 server {
-	# 表示Nginx默认的端口号
+    # 表示Nginx默认的端口号
     listen       80;
     server_name  localhost;
 
@@ -131,42 +131,42 @@ server {
 
 ### 1、正向代理
 
-> 1.  正向代理服务器由客户端设立
-> 2.  客户端了解代理服务器和目标服务器都是谁
-> 3.  帮助我们突破访问权限，提高访问的速度，对目标服务器隐藏客户端的ip地址
+> 1. 正向代理服务器由客户端设立
+> 2. 客户端了解代理服务器和目标服务器都是谁
+> 3. 帮助我们突破访问权限，提高访问的速度，对目标服务器隐藏客户端的ip地址
 
 ![image-20201224144926781](image-20201224144926781.png)
 
 ### 2、 反向代理
 
-> 1.  反向代理服务器器是配置在服务端的。
-> 2.  客户端并不知道访问的到底是哪一台服务器
-> 3.  达到负载均衡，并且可以服务器真正的ip地址
+> 1. 反向代理服务器器是配置在服务端的。
+> 2. 客户端并不知道访问的到底是哪一台服务器
+> 3. 达到负载均衡，并且可以服务器真正的ip地址
 
 ![image-20201224145834259](image-20201224145834259.png)
 
 ### 3、 基于Nginx实现反向代理
 
 > 准备目标服务器Tomcat
->
+> 
 > 安装Nginx
->
+> 
 > 编写Nginx的配置文件，通过Nginx访问到Tomcat服务器
 
 ```yml
 server{
-	listen 80;
-	server name localhost;
-	location / {
-	  proxy_pass http://121.4.47.93:8080/;
-	}
+    listen 80;
+    server name localhost;
+    location / {
+      proxy_pass http://121.4.47.93:8080/;
+    }
 }
 ```
 
 ### 4、关于Nginx的location路径映射
 
 > 优先级关系
->
+> 
 > (location = )>(location /xxx/yyy/zzz)>(location ^~ )>(location ~|~*）>(location /location)>(location /)
 
 ```yml
@@ -182,35 +182,35 @@ location /xxx {
 
 # 3. 正则匹配
 location ~ /xxx{
-	# 匹配所有以/xxx开头的路径
+    # 匹配所有以/xxx开头的路径
 }
 
 # 4. 匹配开头路径
 location ^~ /images/{
-	# 匹配所有以/images/开头的路径
+    # 匹配所有以/images/开头的路径
 }
 
 # 5. 后缀匹配
 location ~* \.(jpg|gif|png){
-	# 匹配后缀
+    # 匹配后缀
 }
 ```
 
 ## 六、负载均衡
 
 > Nginx为我们默认提供了三种负载均衡的策略
->
->  1. 轮询:
->
->     将客户端发起的请求，平均的分配给每一台服务器
->
->  2. 权重
->
->     会将客户端的请求，根据服务器权重值的不同，分配不同的数量
->
->  3. ip_hash
->
->     基于发起请求客户端的ip地址不同，他始终会将请求发送到指定的服务器上。
+> 
+> 1. 轮询:
+>    
+>    将客户端发起的请求，平均的分配给每一台服务器
+> 
+> 2. 权重
+>    
+>    会将客户端的请求，根据服务器权重值的不同，分配不同的数量
+> 
+> 3. ip_hash
+>    
+>    基于发起请求客户端的ip地址不同，他始终会将请求发送到指定的服务器上。
 
 ### 1. 轮询
 
@@ -218,14 +218,14 @@ location ~* \.(jpg|gif|png){
 
 ```
 upstream 名字 {
-	server ip:port;
-	server ip:port;
-	...
+    server ip:port;
+    server ip:port;
+    ...
 }
 server{
-	location / {
-		proxy_pass: http://名字/;
-	}
+    location / {
+        proxy_pass: http://名字/;
+    }
 }
 ```
 
@@ -235,14 +235,14 @@ server{
 
 ```yml
 upstream 名字 {
-	server ip:port weight=比例权重;
-	server ip:port weight=比例权重;
-	...
+    server ip:port weight=比例权重;
+    server ip:port weight=比例权重;
+    ...
 }
 server{
-	location / {
-		proxy_pass: http://名字/;
-	}
+    location / {
+        proxy_pass: http://名字/;
+    }
 }
 ```
 
@@ -252,36 +252,34 @@ server{
 
 ```json
 upstream 名字 {
-	ip_hash;
-	server ip:port;
-	server ip:port;
-	...
+    ip_hash;
+    server ip:port;
+    server ip:port;
+    ...
 }
 server{
-	location / {
-		proxy_pass: http://名字/;
-	}
+    location / {
+        proxy_pass: http://名字/;
+    }
 }
 ```
-
-
 
 ## 七、动静分离
 
 > Nginx的并发能力：
->
-> ​	worker_processes* worker_connections /(2|4)
->
+> 
+> ​    worker_processes* worker_connections /(2|4)
+> 
 > ​    动态资源除以4， 静态资源除以2
->
+> 
 > 提升并发能力更快的给用户响应
 
 ### 1.  动态资源搭理
 
 ```
 location / {
-	  proxy_pass http://121.4.47.93:8080/;
-	}
+      proxy_pass http://121.4.47.93:8080/;
+    }
 ```
 
 ### 2. 静态资源代理
@@ -289,19 +287,19 @@ location / {
 ```yml
 # 配置如下
 location / {
-	root 静态资源路径；
-	index 默认访问路径下的什么资源
-	autoindex on; #以列表的方式访问静态资源 
+    root 静态资源路径；
+    index 默认访问路径下的什么资源
+    autoindex on; #以列表的方式访问静态资源 
 }
 
 location /html {
-	root /data;
-	index index.html
+    root /data;
+    index index.html
 }
 
 location /img {
-	root /data;
-	autoindex on;
+    root /data;
+    autoindex on;
 }
 ```
 
