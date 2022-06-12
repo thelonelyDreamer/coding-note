@@ -1,6 +1,6 @@
 # 一、命令详解
 
-## 1. FROM 
+## 1. FROM
 
 > FROM：指定基础镜像，必须为dockerfile中的第一个命令
 
@@ -39,7 +39,7 @@ FROM mysql:5.6
     RUN ["executable", "param1", "param2"]
 #要注意的是，executable是命令，后面的param是参数 
 #示例： 
-	RUN yum install -y nginx 
+    RUN yum install -y nginx 
     RUN ["yum", "install", "-y", "nginx"] 
 #注：RUN指令创建的中间镜像会被缓存，并会在下次构建中使用。如果不想使用这些缓存镜像，可以在构建时指定--no-cache参数，如：docker build --no-cache
 ```
@@ -47,7 +47,7 @@ FROM mysql:5.6
 ## 4. ADD
 
 > - 将本地文件添加到容器中，tar类型文件会自动解压(网络压缩资源不会被解压)，可以访问网络资源，类似wget
->
+> 
 > - 如果目的位置不存在，Docker会自动创建所需要的目录
 
 ```bash
@@ -83,15 +83,15 @@ FROM mysql:5.6
 #注：使用LABEL指定元数据时，一条LABEL指定可以指定一或多条元数据，指定多条元数据时不同元数据之间通过空格分隔。推荐将所有的元数据通过一条LABEL指令指定，以免生成过多的中间镜像。
 ```
 
-##  8. ENV
+## 8. ENV
 
 > 设置环境变量
 
 ```bash
 #格式：
-	 #<key>之后的所有内容均会被视为其<value>的组成部分，因此，一次只能设置一个变量
+     #<key>之后的所有内容均会被视为其<value>的组成部分，因此，一次只能设置一个变量
     ENV <key> <value>  
-   	#可以设置多个变量，每个变量为一个"<key>=<value>"的键值对，如果<key>中包含空格，可以使用\来进行转义，也可以通过""来进行标示；另外，反斜线也可以用于续行
+       #可以设置多个变量，每个变量为一个"<key>=<value>"的键值对，如果<key>中包含空格，可以使用\来进行转义，也可以通过""来进行标示；另外，反斜线也可以用于续行
     ENV <key>=<value> ...  
 #示例：
     ENV myName John Doe
@@ -143,7 +143,7 @@ FROM mysql:5.6
 　　USER uid:gid
 　　USER user:gid
 　　USER uid:group
- 
+
 # 示例：
 　　USER www
 
@@ -215,7 +215,7 @@ FROM mysql:5.6
 ## 15. ENTRYPOINT
 
 > ENTRYPOINT：配置容器，使其可执行化。配合CMD可省去"application"，只使用参数。
->
+> 
 > 会执行一个脚本
 
 ```bash
@@ -230,11 +230,12 @@ FROM mysql:5.6
 ```
 
 > **注意： CMD和ENTRYPOINT的区别**
->
+> 
 > - CMD的命令会被 docker run 的命令覆盖而ENTRYPOINT不会
-> -  如使用CMD ["/bin/bash"]或ENTRYPOINT ["/bin/bash"]后，再使用docker run -ti image启动容器，它会自动进入容器内部的交互终端，如同使用docker run -ti image /bin/bash。但是如果启动镜像的命令为docker run -ti image /bin/ps，使用CMD后面的命令就会被覆盖转而执行bin/ps命令，而ENTRYPOINT的则不会，而是会把docker run 后面的命令当做ENTRYPOINT执行命令的参数。
->
->    放个例子
+> 
+> - 如使用CMD ["/bin/bash"]或ENTRYPOINT ["/bin/bash"]后，再使用docker run -ti image启动容器，它会自动进入容器内部的交互终端，如同使用docker run -ti image /bin/bash。但是如果启动镜像的命令为docker run -ti image /bin/ps，使用CMD后面的命令就会被覆盖转而执行bin/ps命令，而ENTRYPOINT的则不会，而是会把docker run 后面的命令当做ENTRYPOINT执行命令的参数。
+>   
+>   放个例子
 
 ```
 Dockerfile中为
@@ -263,10 +264,6 @@ CMD ["docker"]
 使用docker run -ti image world
 输出“hello i am world”
 ```
-
- 
-
-
 
 # 二 、docker build 命令
 
@@ -338,9 +335,6 @@ CMD /bin/bash
 docker build -f 文件名 -t 镜像名 .
 ```
 
-
-
 # 参考文献
 
 1. https://www.cnblogs.com/yanh0606/p/11360936.html
-

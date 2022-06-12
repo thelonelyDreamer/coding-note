@@ -1,0 +1,15 @@
+JDBC通过Connection接口提供了5个事务隔离级别的支持。
+
+TRANSACTION_NONE：它由整数值0表示，不支持事务。
+
+TRANSACTION_READ_COMMITTED：它由整数值2表示，支持允许非重复读取和幻像读取的事务。
+
+TRANSACTION_READ_UNCOMMITTED：由整数值1表示，支持允许脏读，不可重复读和幻像读的事务。
+
+TRANSACTION_REPEATABLE_READ：由整数值表示。4支持仅允许幻像读取的事务。
+
+TRANSACTION_SERIALIZABLE：由整数值8表示，支持事务，不允许脏读，不可重复读和幻像读。
+
+Connection 接口的getTransactionIsolation()方法以整数格式检索并返回基础数据库的当前事务隔离级别。
+
+此方法返回代表5个事务隔离级别之一的整数值。

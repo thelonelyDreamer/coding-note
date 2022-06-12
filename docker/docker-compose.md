@@ -6,8 +6,6 @@
 
 > - 通过docker-compose.yml文件编写容器的参数并维护，还可以批量管理容器
 
-
-
 ## 二、安装
 
 ```bash
@@ -56,7 +54,7 @@ services:
       - 3307:3306   #指定端口映射
     environment:
       MYSQL_ROOT_PASSWORD: wangchao #root账号密码
-      TZ: Asia/Shanghai				#指定时区
+      TZ: Asia/Shanghai                #指定时区
     volumes:
       - /mysoftware/data/mysql/8-0-19:/var/lib/mysql  #数据卷映射
 ```
