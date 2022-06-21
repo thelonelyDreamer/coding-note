@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-	<properties resource="db.properties"></properties>
+    <properties resource="db.properties"></properties>
     <settings>
         <!-- 打印查询语句 -->
         <setting name="logImpl" value="STDOUT_LOGGING" />
@@ -20,6 +20,21 @@
                 <setting name="localCacheScope" value="STATEMENT"/>
         -->
         <setting name="localCacheScope" value="SESSION"/>
+        <setting name="cacheEnabled" value="true"/>
+        <setting name="lazyLoadingEnabled" value="true"/>
+         <setting name="multipleResultSetsEnabled" value="true"/>
+      <setting name="useColumnLabel" value="true"/>
+      <setting name="useGeneratedKeys" value="false"/>
+      <setting name="autoMappingBehavior" value="PARTIAL"/>
+      <setting name="autoMappingUnknownColumnBehavior" value="WARNING"/>
+      <setting name="defaultExecutorType" value="SIMPLE"/>
+      <setting name="defaultStatementTimeout" value="25"/>
+      <setting name="defaultFetchSize" value="100"/>
+      <setting name="safeRowBoundsEnabled" value="false"/>
+      <!-- 驼峰映射 -->
+      <setting name="mapUnderscoreToCamelCase" value="false"/>
+      <setting name="localCacheScope" value="SESSION"/>
+      <setting name="jdbcTypeForNull" value="OTHER"/>
     </settings>
 
     <typeAliases>

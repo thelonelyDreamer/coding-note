@@ -46,8 +46,6 @@ public class Address {
 </select>
 ```
 
-
-
 ### 2. 一个对象中有一个集合
 
 ```xml
@@ -76,8 +74,6 @@ public class Address {
 
 - 每个标签均可配置typehandler
 - xml 也可配置全局的typehandler
-
-
 
 二、注解
 
@@ -134,4 +130,3 @@ public interface SchoolMapper {
             "from t_school")
     List<School> getByIds();
 ```
-

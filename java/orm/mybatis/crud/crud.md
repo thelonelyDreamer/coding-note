@@ -21,7 +21,6 @@
   fetchSize="256"
   statementType="PREPARED"
   resultSetType="FORWARD_ONLY">
-  
 ```
 
 ### 1.2 其他
@@ -101,7 +100,4 @@ public int deleteStudent(int id);
 
 @Select("select * from t_student where id=#{id}")
 public Student getStudentById(Integer id);
-
-
 ```
-
